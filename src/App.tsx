@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Exercises from "./components/exercises";
+import Exercises from "./components/Exercises";
 import Home from "./components/Home";
 import GlobalStyle from "./styles/global";
 
