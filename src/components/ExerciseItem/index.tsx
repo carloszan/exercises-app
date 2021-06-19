@@ -3,9 +3,10 @@ import { Exercise } from "../../services/exercises";
 
 type ExerciseItemProps = {
   exercise: Exercise;
+  onChange: (e: string) => void;
 };
 
-const ExerciseItem = ({ exercise }: ExerciseItemProps) => {
+const ExerciseItem = ({ exercise, onChange }: ExerciseItemProps) => {
   return (
     <>
       <h2>{exercise.question}</h2>
@@ -17,6 +18,7 @@ const ExerciseItem = ({ exercise }: ExerciseItemProps) => {
             id={option}
             name={exercise.question}
             value={option}
+            onChange={(e) => onChange(e.target.value)}
           />
           <label htmlFor={option}>{option}</label>
         </div>
