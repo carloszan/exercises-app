@@ -1,14 +1,13 @@
-import axios from 'axios';
+import axios from './axios';
 
-const DEFAULT_URL = "http://localhost:3001"
-
-interface Exercise {
+export interface Exercise {
   id: string;
   question: string;
   options: string[];
 }
 
-export const fetchExercise = async (id: string) => {
-  const response = await axios.get<Exercise>(`${DEFAULT_URL}/questions/${id}`);
+export const fetchExercises = async () => {
+  const response = await axios.get<Exercise[]>('/questions');
+
   return response.data;
 };

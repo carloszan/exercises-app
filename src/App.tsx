@@ -1,27 +1,40 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Exercises from "./components/Exercises";
-import Home from "./components/Home";
-import GlobalStyle from "./styles/global";
+import { Container, Row, Col } from "react-bootstrap";
+import MyNavbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Exercises from "./pages/Exercises";
+import { Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <h1>App</h1>
-        <Switch>
-          <Route path="/exercises/:id">
-            <Exercises />
-          </Route>
+    <Container fluid>
+      <Row>
+        <Col>
+          <MyNavbar />
+        </Col>
+      </Row>
 
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route path="/exercises">
+          <Row className="justify-content-md-center">
+            <Col md="auto">
+              <Exercises />
+            </Col>
+          </Row>
+        </Route>
 
-        <GlobalStyle />
-      </div>
-    </Router>
+        <Route path="/" exact>
+          <Row className="justify-content-md-center">
+            <Col md="auto">
+              <Home />
+            </Col>
+          </Row>
+        </Route>
+      </Switch>
+
+      <Footer />
+    </Container>
   );
 }
 
