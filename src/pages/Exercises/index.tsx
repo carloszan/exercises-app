@@ -8,14 +8,30 @@ interface ExerciseAnswer {
   exerciseId: string;
   answer: string;
 }
+const delay = (delayMs: number) =>
+  new Promise((resolve) => setTimeout(resolve, delayMs));
 
 const FinalExplanation = ({
   exerciseAnswers,
 }: {
   exerciseAnswers: ExerciseAnswer[];
 }) => {
+  const [sendingAnswer, setSendingAnswer] = useState(false);
+  useEffect(() => {
+    setSendingAnswer(true);
+
+    const sendingAnswerPromise = async () => {
+      await delay(2000);
+      console.log("enviando respostas");
+      setSendingAnswer(false);
+    };
+
+    sendingAnswerPromise();
+  }, []);
   return (
     <>
+      {sendingAnswer && <h3>Enviando resposta...</h3>}
+
       {exerciseAnswers.map((exerciseAnswer) => (
         <h3 key={exerciseAnswer.exerciseId}>{exerciseAnswer.answer}</h3>
       ))}
