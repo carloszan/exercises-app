@@ -7,7 +7,7 @@ export interface Exercise {
 }
 
 export const fetchExercises = async () => {
-  const response = await axios.get<Exercise[]>('/questions');
+  const response = await axios.get<Exercise[]>('/exercises');
 
   return response.data;
 };
